@@ -9,7 +9,8 @@
 
 {{ form_start(form, {action:path('app_commande_add')}) }}
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
-    {{ form_widget(form) }}
+     {{ form_widget(form)|replace({'[-br]' : '<br>'})|raw}}
+      {# {{ form_row(form.adr_rue)|replace({'[-br]' : '<br>'})|raw}} #}
     {# <button class="btn">{{ button_label|default('Save') }}</button> #}
     <button type="submit" class="btn btn-primary">Valider le panier </button>
 {{ form_end(form) }}

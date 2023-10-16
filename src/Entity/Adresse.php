@@ -37,7 +37,8 @@ class Adresse
 
     public function __toString(): string
     {
-        return $this->adr_rue;
+        return $this->adr_rue .'[-br]'.
+        $this->adr_code_postal.' '.$this->adr_ville;
     }
 
     public function getId(): ?int

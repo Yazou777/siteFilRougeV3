@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Vente;
 use App\Entity\Panier;
+use App\Entity\Adresse;
 use App\Entity\Produit;
 use App\Entity\Commande;
 use App\Entity\Categorie;
@@ -678,6 +679,29 @@ class AppFixtures extends Fixture
         $commercial1->setUtiPays('France');
         $manager->persist($commercial1);
 
+        $adresseCommcial1 = new Adresse();
+        $adresseCommcial1->setAdrNom('Vendeur');
+        $adresseCommcial1->setAdrPrenom('Demerd');
+        $adresseCommcial1->setAdrRue('5 rue du commerce');
+        $adresseCommcial1->setAdrCodePostal('66666');
+        $adresseCommcial1->setAdrTelephone('0606060606');
+        $adresseCommcial1->setAdrVille('Market City');
+        $adresseCommcial1->setAdrPays('France');
+        $manager->persist($adresseCommcial1);
+        $adresseCommcial1->setAdrUti($commercial1);
+
+        $adresseCommcial1 = new Adresse();
+        $adresseCommcial1->setAdrNom('Vendeur');
+        $adresseCommcial1->setAdrPrenom('Demerd');
+        $adresseCommcial1->setAdrRue("5 rue de l'arnaque");
+        $adresseCommcial1->setAdrCodePostal('99999');
+        $adresseCommcial1->setAdrTelephone('0606060606');
+        $adresseCommcial1->setAdrVille('TaBarnark City');
+        $adresseCommcial1->setAdrPays('Quebec');
+        $manager->persist($adresseCommcial1);
+        $adresseCommcial1->setAdrUti($commercial1);
+
+
         $client1 = new Utilisateur();
         $client1->setemail("client1@gmail.com");
         $client1->setRoles([]);
@@ -692,6 +716,29 @@ class AppFixtures extends Fixture
         $client1->setUtiCommercial($commercial1);
         $manager->persist($client1);
 
+        $adresseClient1 = new Adresse();
+        $adresseClient1->setAdrNom('Client1');
+        $adresseClient1->setAdrPrenom('Demerd');
+        $adresseClient1->setAdrRue('5 rue de jachete');
+        $adresseClient1->setAdrCodePostal('66666');
+        $adresseClient1->setAdrTelephone('0707070070');
+        $adresseClient1->setAdrVille('Market City');
+        $adresseClient1->setAdrPays('France');
+        $manager->persist($adresseClient1);
+        $adresseClient1->setAdrUti($client1);
+
+        $adresseClient1 = new Adresse();
+        $adresseClient1->setAdrNom('Femme de Client1');
+        $adresseClient1->setAdrPrenom('Demerda');
+        $adresseClient1->setAdrRue('5 rue de jachete');
+        $adresseClient1->setAdrCodePostal('66666');
+        $adresseClient1->setAdrTelephone('0614253689');
+        $adresseClient1->setAdrVille('Market City');
+        $adresseClient1->setAdrPays('France');
+        $manager->persist($adresseClient1);
+        $adresseClient1->setAdrUti($client1);
+
+
         $client2 = new Utilisateur();
         $client2->setemail("client2@gmail.com");
         $client2->setRoles([]);
@@ -705,6 +752,28 @@ class AppFixtures extends Fixture
         $client2->setUtiPays('France');
         $client2->setUtiCommercial($commercial1);
         $manager->persist($client2);
+
+        $adresseClient2 = new Adresse();
+        $adresseClient2->setAdrNom('MR Client2');
+        $adresseClient2->setAdrPrenom('Marc');
+        $adresseClient2->setAdrRue('5 rue de Machette');
+        $adresseClient2->setAdrCodePostal('66666');
+        $adresseClient2->setAdrTelephone('061777779');
+        $adresseClient2->setAdrVille('Murder City');
+        $adresseClient2->setAdrPays('Jungle');
+        $manager->persist($adresseClient2);
+        $adresseClient2->setAdrUti($client2);
+
+        $adresseClient2 = new Adresse();
+        $adresseClient2->setAdrNom('Madame de  Client2');
+        $adresseClient2->setAdrPrenom('LaBourik');
+        $adresseClient2->setAdrRue('5 rue de Machette');
+        $adresseClient2->setAdrCodePostal('66666');
+        $adresseClient2->setAdrTelephone('06145789');
+        $adresseClient2->setAdrVille('Murder City');
+        $adresseClient2->setAdrPays('Jungle');
+        $manager->persist($adresseClient2);
+        $adresseClient2->setAdrUti($client2);
 
 ////////////////////////////////////////////
 

@@ -21,7 +21,7 @@ class Adresse
     private ?string $adr_nom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $ard_prenom = null;
+    private ?string $adr_prenom = null;
 
     #[ORM\Column(length: 255)]
     private ?string $adr_rue = null;
@@ -34,6 +34,9 @@ class Adresse
 
     #[ORM\Column(length: 255)]
     private ?string $adr_ville = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $adr_pays = null;
 
     public function __toString(): string
     {
@@ -70,14 +73,14 @@ class Adresse
         return $this;
     }
 
-    public function getArdPrenom(): ?string
+    public function getAdrPrenom(): ?string
     {
-        return $this->ard_prenom;
+        return $this->adr_prenom;
     }
 
-    public function setArdPrenom(string $ard_prenom): static
+    public function setAdrPrenom(string $adr_prenom): static
     {
-        $this->ard_prenom = $ard_prenom;
+        $this->adr_prenom = $adr_prenom;
 
         return $this;
     }
@@ -126,6 +129,18 @@ class Adresse
     public function setAdrVille(string $adr_ville): static
     {
         $this->adr_ville = $adr_ville;
+
+        return $this;
+    }
+
+    public function getAdrPays(): ?string
+    {
+        return $this->adr_pays;
+    }
+
+    public function setAdrPays(string $adr_pays): static
+    {
+        $this->adr_pays = $adr_pays;
 
         return $this;
     }

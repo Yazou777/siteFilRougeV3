@@ -82,14 +82,20 @@ class CommandeController extends AbstractController
         $this->addFlash('message', 'Votre panier est vide');
         return $this->redirectToRoute('app_accueil');
     }
-
-    $form = $this->createForm(CommandeType::class, data: null);
+    //dd($panier);
+    $form = $this->createForm(OrderType::class, data: null,options: [
+        'user' => $this->getUser()
+    ]);
     $form->handleRequest($request);
+   // dd( $form->get('adr_rue')->getData()->getAdrRue());
     if ($form->isSubmitted() && $form->isValid()) {
-        
-            $adresseLivraison = $form->get('com_adresse_livraison')->getData();
-            $adresseFacture = $form->get('com_adresse_facturation')->getData();
-            $commentaire = $form->get('com_commentaire')->getData();
+        $adresseLivraison = $form->get('adr_rue')->getData();
+        $commentaire = $form->get('commentaire')->getData();
+        $adresseFacture = $form->get('adr_fac')->getData();
+            // $adresseLivraison = $form->get('com_adresse_livraison')->getData();
+            // $adresseFacture = $form->get('com_adresse_facturation')->getData();
+            // $commentaire = $form->get('com_commentaire')->getData();
+
             //dd($adresseLivraison);
             // $em->persist($commande);
             // $em->flush();
@@ -103,9 +109,11 @@ class CommandeController extends AbstractController
      $commande->setComUti($this->getUser());
      //$commande->setComAdresseLivraison($this->getUser()->getUtiRue()." ".$this->getUser()->getUtiVille()." ".$this->getUser()->getUtiCodePostal()." ".$this->getUser()->getUtiPays());
      //dd($commande);
-     $commande->setComAdresseFacturation($adresseFacture);
-     $commande->setComAdresseLivraison($adresseLivraison);
-     $commande->setComCommentaire($commentaire);
+
+        $commande->setComAdresseFacturation(str_replace("[-br]", " ",$adresseFacture));
+        $commande->setComAdresseLivraison(str_replace("[-br]", " ",$adresseLivraison));
+        $commande->setComCommentaire($commentaire);
+
      // On parcourt le panier pour créer les détails de commande
      foreach($panier as $proId => $quantite){
          $panier = new Panier();

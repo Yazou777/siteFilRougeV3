@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 class OrderType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -23,6 +23,16 @@ class OrderType extends AbstractType
                 'choices' => $user->getAdresses(),
                 'expanded' => true
             ])
+            ->add('adr_fac', EntityType::class, [
+                'class' => Adresse::class,
+                'label' => 'Adresse de Facturation',
+                'required' => true,
+                'multiple' => false,
+                'choices' => $user->getAdresses(),
+                'expanded' => true
+            ])
+            ->add('commentaire', null, ['required' => true ,
+            'label' => 'Commentaire',])
         ;
     }
 

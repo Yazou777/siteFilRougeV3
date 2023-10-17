@@ -41,7 +41,7 @@ class CommandeController extends AbstractController
         $form = $this->createForm(OrderType::class, data: null,options: [
             'user' => $this->getUser()
         ]);
-
+        //dd($form->get('transporteur')->getData());
         // vide le panier
         //$session->set('panier', []);
 

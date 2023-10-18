@@ -13,11 +13,12 @@ class AdresseType extends AbstractType
     {
         $builder
             ->add('adr_nom')
-            ->add('ard_prenom')
+            ->add('adr_prenom')
             ->add('adr_rue')
             ->add('adr_code_postal')
             ->add('adr_telephone')
             ->add('adr_ville')
+            ->add('adr_pays')
             //->add('adr_uti')
         ;
     }

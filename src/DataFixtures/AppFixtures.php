@@ -12,6 +12,7 @@ use App\Entity\Livraison;
 use App\Entity\Fournisseur;
 use App\Entity\Utilisateur;
 use App\Entity\BonLivraison;
+use App\Entity\Transporteur;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -790,6 +791,24 @@ class AppFixtures extends Fixture
         $commande2client1->setComAdresseFacturation("Chez moi");
         $manager->persist($commande2client1);
         $client1->addCommande($commande2client1);
+
+        $CouscousSimo = new Transporteur();
+        $CouscousSimo->setTraNom("CouscousSimo");
+        $CouscousSimo->setTraDescription("Vous livre votre semoule en 2-3 jours");
+        $CouscousSimo->setTraPrix(5.99);
+        $manager->persist($CouscousSimo);
+
+        $marcTransPorc= new Transporteur();
+        $marcTransPorc->setTraNom("MarcTransPorc");
+        $marcTransPorc->setTraDescription("Specialiste en livraison de porc");
+        $marcTransPorc->setTraPrix(15);
+        $manager->persist($marcTransPorc);
+
+        $laPoste= new Transporteur();
+        $laPoste->setTraNom("LaPoste");
+        $laPoste->setTraDescription("Perd votre colis en 2-3 jours");
+        $laPoste->setTraPrix(9.99);
+        $manager->persist($laPoste);
 
 ////////////////////////////////////////
 

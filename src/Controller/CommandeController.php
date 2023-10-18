@@ -87,11 +87,13 @@ class CommandeController extends AbstractController
         'user' => $this->getUser()
     ]);
     $form->handleRequest($request);
-   // dd( $form->get('adr_rue')->getData()->getAdrRue());
+    //dd( $form->get('transporteur')->getData()->getAdrRue());
     if ($form->isSubmitted() && $form->isValid()) {
         $adresseLivraison = $form->get('adr_rue')->getData();
         $commentaire = $form->get('commentaire')->getData();
         $adresseFacture = $form->get('adr_fac')->getData();
+      //  $fdp = $form->get('transporteur')->getData();
+         // dd( $form->get('transporteur')->getData());
             // $adresseLivraison = $form->get('com_adresse_livraison')->getData();
             // $adresseFacture = $form->get('com_adresse_facturation')->getData();
             // $commentaire = $form->get('com_commentaire')->getData();

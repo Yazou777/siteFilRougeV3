@@ -39,7 +39,7 @@ class OrderType extends AbstractType
                 'multiple' => false,
                 'expanded' => true
             ])
-            ->add('commentaire', null, ['required' => true ,
+            ->add('commentaire', null, [
             'label' => 'Commentaire',])
         ;
     }
